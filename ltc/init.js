@@ -1,15 +1,6 @@
-PlayFab.settings.titleId = "5417";
-var blocklyWorkspace;
-
-hamster_data.images = ['./media/critters/hamster.png'];
-
-var settings = {
-    character: hamster_data,
-    roomPath: './media/rooms/'
-}
-var world = new World(settings, 'stage');
-
-var blocklyToolbox = document.getElementById("toolbox");
+var 
+blocklyWorkspace,
+blocklyToolbox = document.getElementById("toolbox");
 
 var blocklyOptions = { 
 	toolbox : blocklyToolbox, 
@@ -48,14 +39,10 @@ function blocklyUpdateFunction(event) {
     document.getElementById('code').value = code;
 }
 
-function loginSession(ticket) {
-    var r = Server.joinRoom(ticket);
-    world.createRoom(r);
-    blocklyWorkspace = Blockly.inject('blocklyDiv',blocklyOptions);
-    blocklyWorkspace.addChangeListener(blocklyUpdateFunction);
-    var workspaceBlocks = document.getElementById("workspaceBlocks"); 
-    Blockly.Xml.domToWorkspace(workspaceBlocks, blocklyWorkspace);
-}
+blocklyWorkspace = Blockly.inject('blocklyDiv',blocklyOptions);
+blocklyWorkspace.addChangeListener(blocklyUpdateFunction);
+var workspaceBlocks = document.getElementById("workspaceBlocks"); 
+Blockly.Xml.domToWorkspace(workspaceBlocks, blocklyWorkspace);
 
 function ltcRun() {
 	Blockly.JavaScript.addReservedWords('code');

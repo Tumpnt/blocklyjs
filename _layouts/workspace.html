@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en-US">
-<title>Project Learn To Code</title>
+<title>Blockly JS</title>
 	<head>
 		<style>
             html {
@@ -51,41 +51,18 @@
   
 <body style="background-color:#EEEEEE;">
     <main role="main" >
-	
-    <div id="login" class="login container mb-4" style="background-color:#EEEEEE;">
-        <div class="card m-2">
-            <div class="card-header">Enter your Username</div>
-            <div class="card-body">
-                <form novalidate>
-                    <div>
-                        <input type="Username" class="form-control" id="username" placeholder="Username" required autocomplete="Username">
-                    </div>
-					<center>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary" onclick="play()">Login</button>
-                    </div>
-					</center>
-                </form>
-            </div>
-        </div>
-    </div>
-        <div id="game" style="display:none;background-color:#EEEEEE;">
+        <div id="game" style="background-color:#EEEEEE;">
 
                 <div class="container">
             <button class="btn btn-success" onclick="ltcRun()">Run</button>
                 </div>
-            <div class="client hide client">
-                <div id="blocklyDiv" style="height: 480px; width: 850px;"></div>
-                <canvas id="stage" width="850" height="480"></canvas>
-            </div>
+            <div id="blocklyDiv" style="height: 480px; width: 850px;"></div>
             <textarea name="" id="code" cols="30" rows="10" readonly style="height: 480px; width: 850px;"></textarea>
-            <textarea id="chatlogArea" style="width: 75%;border:0;background-color: rgba(0,0,0,0);"></textarea>
 
         </div>
     </main>
         <footer class="footer">
                 <div class="container">
-                   <a href="https://github.com/boxcritters/private-box"><img src="https://boxcritters.github.io/private-box/attribution.png" height="40" alt=""></a>
                     <a href="https://developers.google.com/blockly"><img src="https://developers.google.com/blockly/images/logos/logo_built_on.png" height="40" alt=""></a>
                 </div>
               </footer>
@@ -96,77 +73,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <!-- Frameworks -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script> -->
-    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
     <script src="{{site.url}}/blockly/blockly_compressed.js"></script>
     <script src="{{site.url}}/blockly/blocks_compressed.js"></script>
     <script src="{{site.url}}/blockly/javascript_compressed.js"></script>
     <script src="{{site.url}}/blockly/msg/en-gb.js"></script>
-
-    <!-- Box Critters -->
-    <script>
-(function ($) {
-
-    $.fn.addCard = function (name, text) {
-        var card = $('<div class="card mb-4"></div>').addClass(name);
-        var head = $('<div class="card-header"><div>').text(name).appendTo(card);
-        var body = $('<div class="card-body"></div>').text(text).appendTo(card);
-        var body = $('<div class="card-footer" style="display:none"></div>').appendTo(card);
-        this.append(card);
-        return this;
-    };
-
-    $.fn.addMenu = function (menu) {
-        var html = $('<div class="menu"></div>');
-        for (var n = 0; n < menu.length; n++) {
-            let option = menu[n];
-            var button = $('<button class="btn btn-primary m-1"></button>')
-                .text(option.text)
-                .appendTo(html);
-            if (option.action) {
-                button.click(function () {
-                    socket.emit(option.action, option.data);
-                });
-            }
-        }
-        this.append(html);
-        return this;
-    };
-
-    $.fn.addAlert = function (name, message, style) {
-        var html = $('<div class="alert m-2"></div>')
-            .addClass('alert-' + style)
-            .html('<strong>' + name + ':</strong> ' + message);
-        this.append(html);
-        return this;
-    };
-
-    $.fn.feedback = function (message) {
-        if (message) {
-            this.addClass('is-invalid').next('.invalid-feedback').text(message);
-        } else {
-            this.removeClass('is-invalid');
-        }
-        return this;
-    }
-
-    $.fn.replaceText = function (searchvalue, newvalue) {
-        var text = this.text();
-        if (text !== undefined) {
-            this.text(text.replace(searchvalue, newvalue));
-        }
-        return this;
-    }
-
-}(jQuery));
-
-	</script>
-	
-    <script src="{{site.url}}/client/login.js"></script>
-    <script src="{{site.url}}/client/client1.js"></script>
-	
-    <script src="{{site.url}}/client/data.js"></script>
-    <script src="{{site.url}}/ltc/server.js"></script>
 
     <!--Blockly Blocks-->
     <script src="{{site.url}}/ltc/blocks.js"></script>
